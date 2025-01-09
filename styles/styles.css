@@ -1,0 +1,325 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #000000;
+  padding: 5px;
+  color: white;
+}
+
+.quiz-container {
+  display: flex;
+  justify-content: center;
+  background-color: #222222;
+  color: white;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 15px 0px 0px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container {
+  display: grid;
+  justify-items: center;
+}
+
+.form-container img {
+  max-height: 450px;
+  min-height: 450px;
+  width: 350px;
+
+}
+
+/* Form Styles */
+.form-group {
+  margin-top: 15px;
+  padding: 5px 0px 0px 20px;
+}
+
+#score-div {
+  width: 100%;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.form-control {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  width: 100%;
+}
+
+.form-check-input {
+  margin-top: 5px;
+}
+
+/* Button Styles */
+.btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #0069d9;
+}
+
+/* Utility Classes */
+.float-right {
+  float: right;
+}
+
+.bg-secondary {
+  background-color: #222222;
+  color: white;
+}
+
+.badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .quiz-container {
+      max-width: 100%;
+      padding: 10px;
+  }
+
+  .form-group label, .form-control, .btn {
+      font-size: 13px; /* Even smaller font size for mobile */
+  }
+}
+
+.form-container form-group row{
+  margin-bottom: 20px;
+}
+
+.matrix-container {
+  display: grid;
+  width: 90vw;
+  height: 80vh;
+  grid-template-columns: 50px repeat(13, 1fr) 100px; /* 14 columns in total */
+  grid-template-rows: 30px 30px repeat(5, 25%); /* 5 rows in total */
+}
+
+.empty-header-description {
+  /* Styling for the top-left corner cell */
+  
+  grid-column: span 1;
+  grid-row-start: 1;
+}
+
+.empty-header {
+  border-right: 1px solid white;
+}
+
+.-row-header {
+  border-left: 1px solid white;
+}
+
+.end-row {
+  display: flex;
+  align-items: center;
+  font-size: small;
+  border: 1px solid white;
+  text-align: center;
+  padding: 1px;
+  color: white;
+}
+
+.end-row[data-suit="Diamonds"], .end-row[data-suit="Hearts"] {
+  background-color: rgba(255, 0, 0, 0.651);
+}
+
+.end-row[data-suit="Spades"], .end-row[data-suit="Clubs"] {
+  background-color: black;
+}
+
+.column-description {
+  grid-row-start: 1;
+  grid-column: span 2;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  text-align: center;
+  color: white;
+}
+
+.column-description[data-att="Ace-2"] {
+  grid-column-start: 2; 
+  grid-column: span 2;
+  background-color: green
+}
+
+
+.column-description[data-att="3-4"] {
+  background-color: cornflowerblue;
+}
+
+.column-description[data-att="5-6"] {
+  background-color: darkgrey;
+  
+}
+
+.column-description[data-att="7-8"] {
+  background-color: darkorange;
+}
+
+.column-description[data-att="Jack"] {
+  grid-column: span 1; /* Override to span only 1 column */
+  background-color: rgba(169, 169, 169, 0.473);
+}
+
+.column-description[data-att="9-10"] {
+  background-color: purple;
+}
+
+.column-description[data-att="Queen-King"] {
+  background-color: darkgoldenrod;
+}
+
+.column-name, .row-name, .grid-item .column-description {
+  border: 1px solid #ddd; /* Border for visibility */
+  padding: 2px; /* Padding for content */
+  text-align: center; /* Centering the text */
+  color: white;
+}
+
+
+
+.column-name {
+  background-color: rgba(31, 29, 29, 0.685); /* Different background for column names */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  border-right: dotted grey;
+  border-left: 1px solid white;
+  
+}
+
+.row-name {
+  display: flex;
+  background-color: whitesmoke; /* Different background for row names */
+  /* Additional styles if needed */
+  font-size: 50px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.grid-item {
+  /* Styling for elements within each cell */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  align-content: stretch;
+  border-bottom: 1px solid rgb(226, 220, 220);
+  color: white;
+  
+}
+
+.grid-item .card-image{
+  width: 100%;
+  height: 50%;
+  display: block;
+  margin: 0 auto;
+
+  /* Styling for grid items */
+  /* You can add hover effects, different background colors, etc. */
+}
+
+.grid-item .card-person,
+.grid-item .card-action,
+.grid-item .card-object {
+  width: 100%; /* Ensures full width */
+  height: 5%;
+  display: flex;
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  /* Additional styling */
+}
+
+
+.grid-item * {
+  font-size: small;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.grid-item[data-suit="Hearts"], .grid-item[data-suit="Diamonds"] {
+  background-color: rgba(255, 0, 0, 0.651);
+}
+
+
+.row-name[data-suit="Diamonds"], .row-name[data-suit="Hearts"] {
+  color: rgba(255, 0, 0, 0.651);
+}
+
+.row-name[data-suit="Spades"], .row-name[data-suit="Clubs"] {
+  color: black;
+}
+
+.form-container form-group row{
+   margin-bottom: 20px;
+}
+
+.correct-input {
+   background-color: green;
+   color: white;
+}
+
+.incorrect-input {
+    background-color: red;
+    color: white;
+ }
+  
+#addMatrix {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 600px; /* Adjust the maximum width as per your requirement */
+  
+}
+
+.form-label {
+    display: block;
+    text-align: left;
+}
+
+.form-control {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#add-matrix-btn {
+    width: 50%;
+}
+
+.modal-content {
+  background-color: black;
+}
