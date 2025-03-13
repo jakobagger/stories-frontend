@@ -6,12 +6,15 @@ import {
 } from "./utils.js"
 
 import { initStories } from "./pages/stories/stories.js";
+import { initAddStory } from "./pages/addStory/addStory.js";
 
 window.addEventListener("load", async () => {
 
   const templateAbout = await loadHtml("./pages/about/about.html")
   const templateNotFound = await loadHtml("./pages/notFound/notFound.html")
   const templateStories = await loadHtml("./pages/stories/stories.html")
+  const templateAddStory = await loadHtml("./pages/addStory/addStory.html")
+  const templatePlayStory = await loadHtml("./pages/playStory/playStory.html")
   
   let  router
   if (window.location.hostname === 'localhost' || window.location.hostname ==="127.0.0.1") {
@@ -48,6 +51,13 @@ window.addEventListener("load", async () => {
     "/stories": () => {
       renderHtml(templateStories, "content");
       initStories()
+    },
+    "/addStory": () => {
+      renderHtml(templateAddStory, "content");
+      initAddStory()
+    },
+    "/playStory": () => {
+      renderHtml(templatePlayStory, "content");
     },
       
     })
