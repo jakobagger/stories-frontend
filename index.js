@@ -7,6 +7,7 @@ import {
 
 import { initStories } from "./pages/stories/stories.js";
 import { initAddStory } from "./pages/addStory/addStory.js";
+import { initStoryDetails } from "./pages/storyDetails/storyDetails.js";
 
 window.addEventListener("load", async () => {
 
@@ -14,7 +15,7 @@ window.addEventListener("load", async () => {
   const templateNotFound = await loadHtml("./pages/notFound/notFound.html")
   const templateStories = await loadHtml("./pages/stories/stories.html")
   const templateAddStory = await loadHtml("./pages/addStory/addStory.html")
-  const templatePlayStory = await loadHtml("./pages/playStory/playStory.html")
+  const templateStoryDetails = await loadHtml("./pages/storyDetails/storyDetails.html")
   
   let  router
   if (window.location.hostname === 'localhost' || window.location.hostname ==="127.0.0.1") {
@@ -56,8 +57,9 @@ window.addEventListener("load", async () => {
       renderHtml(templateAddStory, "content");
       initAddStory()
     },
-    "/playStory": () => {
-      renderHtml(templatePlayStory, "content");
+    "/story-details/:id": (match) => {
+      renderHtml(templateStoryDetails, "content");
+      initStoryDetails(match)
     },
       
     })
