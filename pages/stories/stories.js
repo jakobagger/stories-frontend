@@ -26,7 +26,7 @@ function renderStoryData(data) {
     <tr>
     <td>${story.id}</td>
     <td>${story.title}</td>
-    <td>${story.content}</td>
+    <td>${story.description}</td>
     </tr>
     `)
 
