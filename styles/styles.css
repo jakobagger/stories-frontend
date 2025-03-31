@@ -17,3 +17,8 @@ body {
   margin-bottom: 0.5em;
   border-radius: 1em;
 }
+
+.card {
+  background-color: seagreen;
+}
+
