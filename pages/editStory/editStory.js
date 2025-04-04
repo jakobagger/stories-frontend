@@ -129,7 +129,7 @@ async function addNode(evt) {
     await fetch(URLnode, options).then(handleHttpErrors);
 
     setStoryStatus("Node successfully created");
-    renderStoryNodes(nodes); // Refresh the nodes after adding a new one
+    fetchAndRenderStoryNodes(storyId); // Refresh the nodes after adding a new one
   } catch (error) {
     if (error.apiError) {
       setStoryStatus(error.apiError.message);
