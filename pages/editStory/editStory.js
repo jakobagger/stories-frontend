@@ -1,4 +1,8 @@
 import { initNodeModal, openNodeModal } from "../../components/nodeModal.js";
+import {
+  initChoicesModal,
+  openManageChoices,
+} from "../../components/choicesModal.js";
 import { deleteNode } from "../../api.js";
 import { API_URL } from "../../settings.js";
 const URLstory = API_URL + "/story";
@@ -9,6 +13,7 @@ import { handleHttpErrors, makeOptions } from "../../utils.js";
 
 let handlersInitialized = false;
 let storyId = null;
+let storyStartNodeId = null;
 
 export async function initEditStory(match) {
   const id = match?.data?.id;
@@ -19,6 +24,7 @@ export async function initEditStory(match) {
 
   if (!handlersInitialized) {
     initNodeModal();
+    initChoicesModal();
 
     document
       .getElementById("edit-story-btn")
@@ -63,6 +69,7 @@ async function fetchStoryDetails(URL, id) {
 function renderStory(story) {
   document.getElementById("title").value = story.title;
   document.getElementById("description").value = story.description;
+  storyStartNodeId = story.startNodeId || null;
 }
 
 async function editStory(evt) {
@@ -127,6 +134,7 @@ function renderStoryNodes(nodes) {
         <h5 class="card-title">${node.title || "Untitled Node"}</h5>
         <p class="card-text">${node.text || "No content"}</p>
         <button class="btn btn-sm btn-primary edit-node-btn">Edit</button>
+        <button class="btn btn-sm btn-secondary manage-choices-btn ms-2">Choices…</button>
         ${deleteBtnHtml}
       </div>
     `;
@@ -137,6 +145,12 @@ function renderStoryNodes(nodes) {
       const delBtn = card.querySelector(".delete-node-btn");
       delBtn.dataset.nodeId = node.id;
     }
+
+    // wire up the Choices click
+    card
+      .querySelector(".manage-choices-btn")
+      .addEventListener("click", () => openManageChoices(node, storyId, storyStartNodeId));
+    
     // wire up the Edit click
     card.querySelector(".edit-node-btn").addEventListener("click", () => {
       openNodeModal(node, async (updated) => {
