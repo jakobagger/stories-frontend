@@ -15,6 +15,11 @@ export async function initStoryDetails(match) {
 }
 
 async function fetchAndRenderStoryDetails(URL, id) {
+
+  setStoryStatus("");
+  document.getElementById("story-node-text").innerText = "";
+  document.getElementById("story-choices").innerHTML = "";
+
   const story = await fetchStoryDetails(URL, id);
   if (!story) return;
 
@@ -25,7 +30,7 @@ async function fetchAndRenderStoryDetails(URL, id) {
     return;
   }
 
-  fetchAndRenderNode(story.id, story.startNodeId);
+  fetchAndRenderNode(story.startNodeId);
 }
 
 async function fetchStoryDetails(URL, id) {

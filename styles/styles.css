@@ -13,12 +13,36 @@ body {
 }
 
 .scene {
-  border: solid 2px lightgray;
+  border: solid 2px seagreen;
   margin-bottom: 0.5em;
   border-radius: 1em;
+  min-height: 10em;
 }
 
 .card {
   background-color: seagreen;
 }
+
+/* make the card a column flexbox */
+#node-view.card {
+  display: flex;
+  flex-direction: column;
+  /* your existing min-height stays */
+  min-height: 300px; /* or whatever you already have */
+  padding: 1rem;     /* if you want some internal breathing room */
+}
+
+/* this will push the buttons down */
+#story-node-text {
+  /* grow to fill available space */
+  flex: 1;
+}
+
+/* optional: a little margin between text and buttons */
+#story-choices {
+  margin-top: 1rem;
+  /* small bottom margin so buttons never hug the very bottom edge */
+  margin-bottom: 0.5rem;
+}
+
 
