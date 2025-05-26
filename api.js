@@ -8,3 +8,13 @@ export function deleteNode(id) {
   return fetch(`${URLnode}/${id}`, makeOptions("DELETE"))
     .then(handleHttpErrors);
 }
+
+export async function createChoice(choice) {
+  const response = await fetch(URLchoice, makeOptions("POST", choice));
+  return handleHttpErrors(response);
+}
+
+export async function fetchStoryNodes(storyId) {
+  const response = await fetch(`${URLstory}/${storyId}/nodes`);
+  return handleHttpErrors(response);
+}
