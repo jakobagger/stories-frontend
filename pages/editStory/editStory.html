@@ -1,0 +1,52 @@
+<div class="template">
+
+    <p id="info-space"></p>
+
+    <div class="container mt-5">
+        <h2>Edit Story</h2>
+
+        <p id="info-space"></p>
+
+        <div class="row">
+            <!-- Story Input -->
+            <div class="col-md-6">
+                <form id="editStoryForm" class="row g-3">
+                    <div class="col-12">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" required>
+                    </div>
+                    <div class="col-12">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea class="form-control" id="description" rows="3" required></textarea>
+                    </div>
+                    <div class="col-12">
+                        <button type="button" class="btn btn-primary" id="edit-story-btn">Update Story</button>
+                    </div>
+                </form>
+
+                <hr>
+                
+                <!-- Add New Node Form -->
+                <div class="p-3 mb-4 border rounded">
+                    <h5 class="mb-3">Add New Node</h5>
+                    <div class="mb-2">
+                      <input type="text" class="form-control" id="node-title" placeholder="Node title" />
+                    </div>
+                    <div class="mb-2">
+                      <textarea class="form-control" id="node-text" rows="3" placeholder="Node text"></textarea>
+                    </div>
+                    <button class="btn btn-primary" id="add-node-btn">Add Node</button>
+                  </div>
+                  
+            </div>
+
+            <!-- Story Nodes Display -->
+            <div class="col-md-6">
+                <h5>Story Nodes</h5>
+                <div id="story-nodes-area">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

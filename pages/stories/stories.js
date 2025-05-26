@@ -24,7 +24,8 @@ async function getAndRenderStoryData(){
 function renderStoryData(data) {
     const tableRows = data.map(story => `
     <tr>
-    <td>${story.id}</td>
+    <td><a href="/#/story-details/${story.id}" class="btn btn-sm btn-primary">Play</a></td>
+    <td><a href="/#/edit-story/${story.id}" class="btn btn-sm btn-primary">Edit</a></td>
     <td>${story.title}</td>
     <td>${story.description}</td>
     </tr>

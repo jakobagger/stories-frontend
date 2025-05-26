@@ -1,3 +1,5 @@
+"use strict"
+
 import "https://unpkg.com/navigo"  //Will create the global Navigo object used below
 import "https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"
 
@@ -7,6 +9,8 @@ import {
 
 import { initStories } from "./pages/stories/stories.js";
 import { initAddStory } from "./pages/addStory/addStory.js";
+import { initStoryDetails } from "./pages/storyDetails/storyDetails.js";
+import { initEditStory } from "./pages/editStory/editStory.js";
 
 window.addEventListener("load", async () => {
 
@@ -14,7 +18,8 @@ window.addEventListener("load", async () => {
   const templateNotFound = await loadHtml("./pages/notFound/notFound.html")
   const templateStories = await loadHtml("./pages/stories/stories.html")
   const templateAddStory = await loadHtml("./pages/addStory/addStory.html")
-  const templatePlayStory = await loadHtml("./pages/playStory/playStory.html")
+  const templateStoryDetails = await loadHtml("./pages/storyDetails/storyDetails.html")
+  const templateEditStory = await loadHtml("./pages/editStory/editStory.html")
   
   let  router
   if (window.location.hostname === 'localhost' || window.location.hostname ==="127.0.0.1") {
@@ -36,7 +41,6 @@ window.addEventListener("load", async () => {
       }
     })
     .on({
-      //For very simple "templates", you can just insert your HTML directly like below
       "/": () => {
         document.getElementById("content").innerHTML =
         `<h2>Welcome!</h2>
@@ -56,8 +60,13 @@ window.addEventListener("load", async () => {
       renderHtml(templateAddStory, "content");
       initAddStory()
     },
-    "/playStory": () => {
-      renderHtml(templatePlayStory, "content");
+    "/story-details/:id": (match) => {
+      renderHtml(templateStoryDetails, "content");
+      initStoryDetails(match)
+    },
+    "/edit-story/:id": (match) => {
+      renderHtml(templateEditStory, "content");
+      initEditStory(match)
     },
       
     })
